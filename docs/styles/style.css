@@ -10,23 +10,38 @@ body {
 #home {
     padding: 16px;
     text-align: center;
-    background-color: blue;
+    background-color: blue; /*#41B3A3*/
     color: white;
-    border-bottom: 1px solid azure;
+}
+
+.seperation {
+    background-color: blue;
+    padding: 0 16px;
+}
+
+@keyframes spin {
+    0% {transform: rotateX(0deg);}
+    25% {transform: rotateX(90deg);}
+    75% {transform: rotateX(270deg);}
+    100% {transform: rotateX(360deg);}
+}
+
+h1:hover {
+    animation: spin 2s;
 }
 
 .nav {
     list-style-type: none;
-    padding: 0;
+    padding: 0 10px;
     overflow: hidden;
     background-color: blue;
     position: sticky;
-    position: -webkit-sticky;
     top: 0;
-    width: 100%;
+    width: auto;
+    box-shadow: 0px 2px 1px 1px rgb(0,0,0,0.2);
 }
 
-.button a {
+.button > a {
     float: left;
     display: block;
     color: white;
@@ -35,12 +50,17 @@ body {
     text-decoration: none;
 }
 
-.button a:hover {
+.button > a:hover {
+    transition: background-color ease;
+    transition-duration: 1s;
+    border-radius: 9px;
+    margin: 4px;
+    padding: 12px 4px;
     background-color: darkblue;
 }
 
 .doc {
-    padding: 20px 20px 20px 20px; 
+    padding: 20px; 
 }
 
 .doc * {
