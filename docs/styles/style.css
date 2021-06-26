@@ -1,22 +1,38 @@
+/* variables */
+:root {
+    /* colors */
+    --blue: #726EFF;
+    
+    --green: #08C6AB;
+    --green-hover: #07B59A;
+
+    --background: #212B38;
+    --foreground: #37465B;
+    --interaction: #615DEE;
+
+    --space: 16px;
+}
+
 * { 
     font-family: "Roboto", sans-serif;
     margin: 0;
+    color: white;
 }
 
 body {
-    background-color: azure;
+    background-color: var(--background);
 }
 
 #home {
     padding: 16px;
     text-align: center;
-    background-color: blue; /*#41B3A3*/
-    color: white;
+    background-color: var(--green);
+    
 }
 
 .seperation {
-    background-color: blue;
-    padding: 0 16px;
+    background-color: var(--green);
+    padding: 0 var(--space);
 }
 
 @keyframes spin {
@@ -27,18 +43,18 @@ body {
 }
 
 h1:hover {
-    animation: spin 2s;
+    animation: spin 1s;
 }
 
 .nav {
     list-style-type: none;
-    padding: 0 10px;
+    padding: 0 var(--space);
     overflow: hidden;
-    background-color: blue;
+    background-color: var(--green);
     position: sticky;
     top: 0;
     width: auto;
-    box-shadow: 0px 2px 1px 1px rgb(0,0,0,0.2);
+    box-shadow: 0px 2px 2px rgb(0,0,0,0.5);
 }
 
 .button > a {
@@ -56,29 +72,13 @@ h1:hover {
     border-radius: 9px;
     margin: 4px;
     padding: 12px 4px;
-    background-color: darkblue;
+    background-color: var(--green-hover);
 }
 
 .doc {
-    padding: 20px; 
+    padding: var(--space); 
 }
 
 .doc * {
-    margin: 8px;
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: rgb(12, 17, 23);
-        color: white;
-    }
-    .nav {
-        background-color: darkblue;
-    }
-    #home {
-        background-color: darkblue;
-    }
-    .button a:hover {
-        background-color: blue;
-    }
+    margin: var(--space);
 }
