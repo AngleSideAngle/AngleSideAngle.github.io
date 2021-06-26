@@ -24,7 +24,7 @@ body {
 }
 
 #home {
-    padding: 16px;
+    padding: 64px;
     text-align: center;
     background-color: var(--green);
     
@@ -93,3 +93,7 @@ h1:hover {
         float: none;
     }
 }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--foreground); }
