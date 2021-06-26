@@ -82,3 +82,10 @@ h1:hover {
 .doc * {
     margin: var(--space);
 }
+
+@media screen and (max-width: 400px) {
+    .nav a {
+        float: none;
+
+    }
+}
