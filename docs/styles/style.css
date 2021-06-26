@@ -88,7 +88,7 @@ h1:hover {
     margin: var(--space);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 1024px) {
     .nav a {
         float: none;
     }
