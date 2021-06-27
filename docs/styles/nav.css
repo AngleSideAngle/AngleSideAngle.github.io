@@ -1,0 +1,32 @@
+.nav {
+    list-style-type: none;
+    padding: 0 var(--space);
+    overflow: hidden;
+    background-color: var(--green);
+    position: sticky;
+    top: 0;
+    width: auto;
+    box-shadow: 0px 3px 4px rgb(0,0,0,0.6);
+}
+
+.button a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px 8px;
+    text-decoration: none;
+}
+
+.right a {
+    float: right;
+}
+
+.button a:hover {
+    transition: background-color ease;
+    transition-duration: 1s;
+    border-radius: var(--radius);
+    margin: 4px;
+    padding: 12px 4px;
+    background-color: var(--green-hover);
+}

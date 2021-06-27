@@ -35,50 +35,6 @@ body {
     padding: 0 var(--space);
 }
 
-@keyframes spin {
-    0% {transform: rotateX(0deg);}
-    25% {transform: rotateX(90deg);}
-    75% {transform: rotateX(270deg);}
-    100% {transform: rotateX(360deg);}
-}
-
-h1:hover {
-    animation: spin 1s;
-}
-
-.nav {
-    list-style-type: none;
-    padding: 0 var(--space);
-    overflow: hidden;
-    background-color: var(--green);
-    position: sticky;
-    top: 0;
-    width: auto;
-    box-shadow: 0px 3px 4px rgb(0,0,0,0.6);
-}
-
-.button a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 16px 8px;
-    text-decoration: none;
-}
-
-.right a {
-    float: right;
-}
-
-.button a:hover {
-    transition: background-color ease;
-    transition-duration: 1s;
-    border-radius: var(--radius);
-    margin: 4px;
-    padding: 12px 4px;
-    background-color: var(--green-hover);
-}
-
 .doc {
     padding-top: var(--space);
     padding-bottom: var(--space);
@@ -106,7 +62,6 @@ h1:hover {
     text-decoration: none;
 }
 
-
 #contact {
     padding: var(--space);
     background-color: var(--blue);
@@ -115,16 +70,12 @@ h1:hover {
 
 #contact * {
     margin: var(--space);
-    
 }
 
+/* small screen formatting */
 @media screen and (max-width: 1024px) {
     .nav a {
         float: none;
-    }
-
-    :root{
-        --space: 16px;
     }
 
     .container {
@@ -135,7 +86,6 @@ h1:hover {
         width: auto;
     }
 }
-
 
 /* scrollbar */
 ::-webkit-scrollbar { width: 16px; }
