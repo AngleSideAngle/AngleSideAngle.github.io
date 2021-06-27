@@ -91,17 +91,18 @@ h1:hover {
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .container > div {
+    padding: var(--space);
     background-color: var(--foreground);
     border-radius: var(--radius);
-    width: calc(50% - 2*var(--space));
+    width: calc(50% - 4*var(--space));
     overflow-wrap: break-word;
 }
 
 .container > div > a {
+    margin: 0;
     text-decoration: none;
 }
 
