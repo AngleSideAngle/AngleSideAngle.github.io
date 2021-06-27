@@ -101,6 +101,10 @@ h1:hover {
     overflow-wrap: break-word;
 }
 
+.container > div > a {
+    text-decoration: none;
+}
+
 
 #contact {
     padding: var(--space);
