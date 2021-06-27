@@ -11,6 +11,7 @@
     --interaction: #615DEE;
 
     --space: 16px;
+    --radius: 9px;
 }
 
 * { 
@@ -54,7 +55,7 @@ h1:hover {
     position: sticky;
     top: 0;
     width: auto;
-    box-shadow: 0px 2px 2px rgb(0,0,0,0.5);
+    box-shadow: 0px 3px 4px rgb(0,0,0,0.6);
 }
 
 .button a {
@@ -74,7 +75,7 @@ h1:hover {
 .button a:hover {
     transition: background-color ease;
     transition-duration: 1s;
-    border-radius: 9px;
+    border-radius: var(--radius);
     margin: 4px;
     padding: 12px 4px;
     background-color: var(--green-hover);
@@ -88,12 +89,39 @@ h1:hover {
     margin: var(--space);
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    style: list
+
+}
+
+.container > div {
+    background-color: var(--foreground);
+    border-radius: var(--radius);
+    width: calc(50% - 2*var(--space));
+    overflow-wrap: break-word;
+}
+
 @media screen and (max-width: 1024px) {
     .nav a {
         float: none;
     }
+
+    :root{
+        --space: 16px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .container > div {
+        width: auto;
+    }
 }
 
-::-webkit-scrollbar { width: 8px; }
+
+::-webkit-scrollbar { width: 16px; }
 ::-webkit-scrollbar-track { background: var(--background); }
 ::-webkit-scrollbar-thumb { background: var(--foreground); }
