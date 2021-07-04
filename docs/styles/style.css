@@ -12,6 +12,7 @@
 
     --space: 16px;
     --radius: 9px;
+    --shadow: rgb(0,0,0,0.6);
 }
 
 * { 
@@ -56,6 +57,10 @@ body {
     overflow-wrap: break-word;
 }
 
+.container > div:hover {
+    transition: background-color 1s;
+    background-color: var(--blue);
+}
 .container > div > a {
     margin: 0;
     text-decoration: none;
@@ -72,7 +77,7 @@ body {
 #contact {
     padding: var(--space);
     background-color: var(--blue);
-    box-shadow: 0px -2px 4px rgb(0,0,0,0.6);
+    box-shadow: 0px -2px 4px var(--shadow);
 }
 
 #contact * {
@@ -89,7 +94,7 @@ body {
         flex-direction: column;
     }
 
-    .container > div {
+    #projects .container > div {
         width: auto;
     }
 }

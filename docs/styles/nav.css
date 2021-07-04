@@ -6,7 +6,7 @@
     position: sticky;
     top: 0;
     width: auto;
-    box-shadow: 0px 3px 4px rgb(0,0,0,0.6);
+    box-shadow: 0px 3px 4px var(--shadow);
 }
 
 .button a {
@@ -18,15 +18,14 @@
     text-decoration: none;
 }
 
-.right a {
-    float: right;
-}
-
 .button a:hover {
-    transition: background-color ease;
-    transition-duration: 1s;
+    transition: background-color 1s ease;
     border-radius: var(--radius);
     margin: 4px;
     padding: 12px 4px;
     background-color: var(--green-hover);
+}
+
+.right a {
+    float: right;
 }
