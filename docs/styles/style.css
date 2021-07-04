@@ -53,13 +53,16 @@ body {
     padding: var(--space);
     background-color: var(--foreground);
     border-radius: var(--radius);
-    width: calc(50% - 4*var(--space));
     overflow-wrap: break-word;
 }
 
 .container > div > a {
     margin: 0;
     text-decoration: none;
+}
+
+#projects > .container > div {
+    width: calc(50% - 4*var(--space));
 }
 
 #file {
