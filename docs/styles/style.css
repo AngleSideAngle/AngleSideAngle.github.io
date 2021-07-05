@@ -71,10 +71,11 @@ body {
     padding: var(--space);
     background-color: var(--foreground);
     border-radius: var(--radius);
+    transition: background-color 1s ease-in-out;
 }
 
 .project > div:hover {
-    transition: background-color 1s;
+    
     background-color: var(--blue);
 }
 
