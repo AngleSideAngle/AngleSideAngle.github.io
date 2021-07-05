@@ -10,7 +10,7 @@
     --foreground: #37465B;
     --interaction: #615DEE;
 
-    --space: 16px;
+    --space: 1rem;
     --radius: 9px;
     --shadow: rgb(0,0,0,0.6);
 }
@@ -31,6 +31,10 @@ body {
     background-color: var(--green);
 }
 
+#home a {
+    text-decoration: none;
+}
+
 .seperation {
     background-color: var(--green);
     padding: 0 var(--space);
@@ -45,6 +49,14 @@ body {
     margin: var(--space);
 }
 
+.align {
+    display: flex;
+}
+
+.align * {
+    margin: 0;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -52,14 +64,15 @@ body {
 }
 
 .container > div {
-    padding: var(--space);
     overflow-wrap: break-word;
 }
 
-.project > div{
+.project > div {
+    padding: var(--space);
     background-color: var(--foreground);
     border-radius: var(--radius);
 }
+
 .project > div:hover {
     transition: background-color 1s;
     background-color: var(--blue);
@@ -95,10 +108,11 @@ input, textarea, button {
     background-color: var(--foreground);
 }
 
-textarea {width: 100%;}
-
 /* small screen formatting */
 @media screen and (max-width: 1024px) {
+    .nav {
+        position: static;
+    }
     .nav a {
         float: none;
     }
@@ -108,7 +122,7 @@ textarea {width: 100%;}
     }
 
     #projects .container > div {
-        width: auto;
+        width: calc(100% - 4*var(--space));
     }
 }
 
