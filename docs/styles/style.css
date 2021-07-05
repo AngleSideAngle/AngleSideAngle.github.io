@@ -48,19 +48,23 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .container > div {
     padding: var(--space);
-    background-color: var(--foreground);
-    border-radius: var(--radius);
     overflow-wrap: break-word;
 }
 
-.container > div:hover {
+.project > div{
+    background-color: var(--foreground);
+    border-radius: var(--radius);
+}
+.project > div:hover {
     transition: background-color 1s;
     background-color: var(--blue);
 }
+
 .container > div > a {
     margin: 0;
     text-decoration: none;
@@ -84,6 +88,15 @@ body {
     margin: var(--space);
 }
 
+input, textarea, button {
+    border-radius: calc(var(--radius)/2);
+    border: none;
+    padding: calc(var(--space)/2);
+    background-color: var(--foreground);
+}
+
+textarea {width: 100%;}
+
 /* small screen formatting */
 @media screen and (max-width: 1024px) {
     .nav a {
@@ -100,6 +113,6 @@ body {
 }
 
 /* scrollbar */
-::-webkit-scrollbar { width: 16px; }
+::-webkit-scrollbar { width: 8px; height: 8px;}
 ::-webkit-scrollbar-track { background: var(--background); }
 ::-webkit-scrollbar-thumb { background: var(--foreground); }

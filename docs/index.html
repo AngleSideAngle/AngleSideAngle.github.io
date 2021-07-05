@@ -5,6 +5,7 @@
         <title>AngleSideAngle</title>
         <link href = "styles/style.css" rel = "stylesheet">
         <link href = "styles/nav.css" rel = "stylesheet">
+        <link href = "styles/webring.css" rel = "stylesheet">
         <link href = "styles/other.css" rel = "stylesheet">
         <link href = "https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
@@ -12,6 +13,8 @@
     <body>
         <div id = "home">
             <h1>Hi, my name is Asa</h1>
+            <br><br>
+            <p><a href="https://en.wikipedia.org/wiki/Congruence_(geometry)#Determining_congruence" target="_blank">proof</a></p>
         </div>
 
         <div class = "seperation">
@@ -22,13 +25,25 @@
             <li class = "button"><a href = "#about">About</a></li>
             <li class = "button"><a href = "#projects">Projects</a></li>
             <li class = "button right"><a href = "#contact">Contact</a></li>
+
         </ul>
         <div class = "doc">
             <div id = "about">
-                <h2>About</h2>
-                <p>This site is generated from my github using the github api</p>
+                <div class="container" style="margin:0;">
+                    <div style="padding:0;margin:0;">
+                        <h2>About</h2>
+                        <p>This site is generated from my github using the github api</p>
+                    </div>
+                    <div id="webring-wrapper">
+                        <a href="https://webring.hackclub.com/" id="previousBtn" class="webring-anchor" title="Previous">‹</a>
+                        <a href="https://webring.hackclub.com/" class="webring-logo" title="Hack Club Webring" alt="Hack Club Webring"></a>
+                        <a href="https://webring.hackclub.com/" id="nextBtn" class="webring-anchor" title="Next">›</a>
+                        <script src="https://webring.hackclub.com/public/embed.min.js"></script>
+                    </div>
+                </div>
+                
                 <hr>
-                <div class = container>
+                <div class = "container project">
                     <!-- About Me is auto generated in gen.js-->
                 </div>
             </div>
@@ -36,7 +51,7 @@
             <div id = "projects">
                 <h2>Projects</h2>
                 <hr>
-                <div class = "container">
+                <div class = "container project">
                     <!-- Projects are auto generated in gen.js-->
                 </div>
             </div> 
@@ -45,8 +60,24 @@
 
         <div id = "contact">
             <h2>Contact</h2>
-            <p>coming soon</p>
-        </div>        
+            <p>email: asapaparo@gmail.com</p>
+            <div class="container">
+                
+                <form onsubmit="return false">
+                    <div>
+                        <input type="text" placeholder="Name" id="name">
+                        <input type="email" placeholder="Email" id="email">
+                    </div>
+                    <div>
+                        <span>What would you like to send me?</span>
+                    </div>
+                        <textarea id="text" rows="4"></textarea>
+                    <div>
+                        <button onclick="send();">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <script src = "scripts/gen.js"></script>
     </body>

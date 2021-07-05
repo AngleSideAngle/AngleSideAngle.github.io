@@ -1,8 +1,8 @@
 const ABOUT_REQUEST = new XMLHttpRequest();
 const PROJECT_REQUEST = new XMLHttpRequest();
 
-const ABOUT = document.getElementById("about").getElementsByClassName("container")[0];
-const PROJECTS = document.getElementById("projects").getElementsByClassName("container")[0];
+const ABOUT = document.getElementById("about").getElementsByClassName("project")[0];
+const PROJECTS = document.getElementById("projects").getElementsByClassName("project")[0];
 
 logError = (request) => {
     console.log(request)
