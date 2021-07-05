@@ -113,6 +113,7 @@ input, textarea, button {
     .nav {
         position: static;
     }
+
     .nav a {
         float: none;
     }
