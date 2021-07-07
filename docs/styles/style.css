@@ -50,10 +50,6 @@ body {
     margin: var(--fixed) 0;
 }
 
-.align {
-    display: flex;
-}
-
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -76,8 +72,12 @@ body {
     background-color: var(--blue);
 }
 
-.project p, h3, article {
+.project p, .project h3, .project article {
     padding: var(--fixed);
+}
+
+.project li {
+    padding: calc(var(--fixed)/2);
 }
 
 .project li {
