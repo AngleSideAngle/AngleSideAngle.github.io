@@ -10,10 +10,10 @@
     --foreground: #37465B;
     --interaction: #615DEE;
 
-    --scaling: 2%;
+    --scaling: 3%;
     --fixed: 1rem;
     --radius: 9px;
-    --shadow: rgb(0,0,0,0.6);
+    --shadow: rgb(0,0,0,0.4);
 }
 
 * { 
@@ -21,6 +21,7 @@
     padding: 0;
     margin: 0;
     color: white;
+    text-decoration: none;
 }
 
 body {
@@ -28,18 +29,14 @@ body {
 }
 
 #home {
-    padding: 64px;
-    text-align: center;
-    background-color: var(--green);
-}
-
-#home a {
-    text-decoration: none;
-}
-
-.seperation {
-    background-color: var(--green);
     padding: 0 var(--scaling);
+    background-color: var(--green);
+}
+
+#home h1 {
+    padding: calc(3*var(--scaling));
+    text-align: center;
+    border-bottom: 0.1rem solid white;
 }
 
 .segment {
@@ -65,11 +62,13 @@ body {
     padding: var(--fixed);
     background-color: var(--foreground);
     border-radius: var(--radius);
-    transition: background-color 1s ease-in-out;
+    box-shadow: 0 0 2rem 0.1rem var(--shadow);
+    transition: 1s ease-in-out;
 }
 
 .project div:hover { 
     background-color: var(--blue);
+    box-shadow: 0 0 2rem 1rem var(--shadow);
 }
 
 .project p, .project h3, .project article {
@@ -78,14 +77,7 @@ body {
 
 .project li {
     padding: calc(var(--fixed)/2);
-}
-
-.project li {
     margin-left: calc(4*var(--fixed));
-}
-
-.container > div > a {
-    text-decoration: none;
 }
 
 #file {
@@ -102,7 +94,7 @@ body {
 
 #contact {
     background-color: var(--blue);
-    box-shadow: 0px -2px 4px var(--shadow);
+    box-shadow: 0 -2rem 2rem 0.1rem var(--shadow);
 }
 
 input, textarea, button {
@@ -114,12 +106,12 @@ input, textarea, button {
 
 /* small screen formatting */
 @media screen and (max-width: 1024px) {
-    .nav {
-        position: static;
+    nav a {
+        float: none;
     }
 
-    .nav a {
-        float: none;
+    nav {
+        content: none;
     }
 
     .container {
@@ -132,6 +124,6 @@ input, textarea, button {
 }
 
 /* scrollbar */
-::-webkit-scrollbar { width: 8px; height: 8px;}
+::-webkit-scrollbar { width: 12px; height: 12px;}
 ::-webkit-scrollbar-track { background: var(--background); }
 ::-webkit-scrollbar-thumb { background: var(--foreground); }
