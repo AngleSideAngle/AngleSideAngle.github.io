@@ -81,7 +81,7 @@ body {
 }
 
 #file {
-    width: calc(100% - 3*var(--fixed) - var(--scaling));
+    width: calc(100% - 2*var(--fixed) - 2*var(--scaling));
 }
 
 #projects > .container > div {
@@ -119,7 +119,7 @@ input, textarea, button {
     }
 
     #projects .container > div {
-        width: calc(100% - 3*var(--fixed) - var(--scaling));
+        width: calc(100% - 2*var(--fixed) - 2*var(--scaling));
     }
 }
 
