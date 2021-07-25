@@ -9,10 +9,6 @@ logError = (request) => {
     console.log(`error: ${request.status}`)
 }
 
-addProject = (part, repo) => {
-    part.innerHTML += projectBox(repo.name, repo.description, repo.html_url);
-}
-
 let projectBox = (title, content, link) => `<div><a href = "${link}"><h3>${title}</h3><p>${content}</p></a></div>`;
 
 ABOUT_REQUEST.open("GET", "https://api.github.com/repos/AngleSideAngle/AngleSideAngle/contents/README.md?ref=main");
@@ -23,7 +19,7 @@ ABOUT_REQUEST.onload = () => {
     if(ABOUT_REQUEST.status === 200) {
         ABOUT.innerHTML = ABOUT_REQUEST.response;
         console.log(ABOUT_REQUEST.response);
-    } else{
+    } else {
         logError(ABOUT_REQUEST);
     }
 }
@@ -33,14 +29,16 @@ PROJECT_REQUEST.open("GET", "https://api.github.com/users/AngleSideAngle/repos")
 PROJECT_REQUEST.send();
 
 PROJECT_REQUEST.onload = () => {
+    let projHTML = "";
     if(PROJECT_REQUEST.status === 200) {
         response = JSON.parse(PROJECT_REQUEST.response);
         for(repo of response) {
             if(repo.description && repo.fork == false) {
-                addProject(PROJECTS, repo);
+                projHTML += projectBox(repo.name, repo.description, repo.html_url);
                 console.log(repo);
             }
         }
+        PROJECTS.innerHTML = projHTML;
     } else {
         logError(PROJECT_REQUEST);
     }
