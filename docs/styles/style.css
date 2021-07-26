@@ -60,7 +60,7 @@ body {
 .grid {
     display: grid;
     grid-gap: var(--fixed);
-    grid-template: auto/auto auto;
+    grid-template: auto/1fr 1fr;
 }
 
 .project > div {
