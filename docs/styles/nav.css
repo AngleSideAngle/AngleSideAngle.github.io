@@ -5,8 +5,6 @@ nav {
 }
 
 nav > ul {
-    display: flex;
-    align-items: center;
     justify-content: space-around;
     list-style: none;
     background-color: var(--top);
@@ -19,11 +17,16 @@ nav li > a {
     border-radius: var(--radius);
     text-align: center;
     display: block;
-    margin: var(--fixed);
+    margin: var(--fixed) 0;
     padding: var(--fixed);
     transition: background-color 500ms ease-in-out;
 }
 
 nav li > a:hover {
     background-color: var(--top-hover);
+}
+
+.external img {
+    height: 2rem;
+    width: auto;
 }

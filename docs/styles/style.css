@@ -42,12 +42,12 @@ html, body {
 
 .container {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
-    align-items: stretch;
 }
 
-.container > div {
-    overflow-wrap: break-word;
+.container > * {
+    margin: 0 var(--fixed);
 }
 
 .grid {
