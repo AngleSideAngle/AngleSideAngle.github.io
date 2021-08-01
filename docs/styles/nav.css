@@ -1,30 +1,28 @@
 nav {
-    position: sticky;
+    width: 100%;
+    position: fixed;
     top: 0;
 }
 
-nav ul {
+nav > ul {
+    display: flex;
+    justify-content: center;
     list-style: none;
-    padding: 0 var(--scaling);
-    overflow: hidden;
-    background-color: var(--green);
-    box-shadow: 0 2rem 2rem 0.1rem var(--shadow);
+    background-color: var(--top);
+    box-shadow: 0 1rem 2rem var(--shadow);
 }
 
-nav ul li a { 
-    float: left;
+nav a {
+    font-size: large;
+    font-weight: bold;
     border-radius: var(--radius);
     text-align: center;
     display: block;
-    margin: 4px;
-    padding: 12px 4px;
-    transition: background-color 0.5s ease-in-out;
+    margin: var(--fixed);
+    padding: var(--fixed);
+    transition: background-color 500ms ease-in-out;
 }
 
-nav ul li a:hover {
-    background-color: var(--green-hover);
-}
-
-.right {
-    float: right;
+nav a:hover {
+    background-color: var(--top-hover);
 }

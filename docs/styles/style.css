@@ -3,8 +3,8 @@
     /* colors */
     --blue: #726EFF;
     
-    --green: #08C6AB;
-    --green-hover: #07B59A;
+    --top: rgb(40,44,52);
+    --top-hover: #07B59A;
 
     --background: #212B38;
     --foreground: #37465B;
@@ -14,6 +14,8 @@
     --fixed: 1rem;
     --radius: 9px;
     --shadow: rgb(0,0,0,0.4);
+
+    --gap: calc(4*var(--fixed));
 }
 
 * { 
@@ -25,12 +27,14 @@
 }
 
 body {
+    box-sizing: border-box;    
+    margin-top: var(--gap);
     background-color: var(--background);
 }
 
 #home {
     padding: 0 var(--scaling);
-    background-color: var(--green);
+    background-color: var(--top);
 }
 
 #home h1 {
@@ -102,15 +106,13 @@ input, textarea, button {
     background-color: var(--foreground);
 }
 
+textarea::-webkit-scrollbar {
+   display: none;
+ }
+
 /* small screen formatting */
 @media screen and (max-width: 1024px) {
-    nav a {
-        float: none;
-    }
-
-    nav {
-        content: none;
-    }
+    
 
     .container {
         flex-direction: column;
@@ -122,6 +124,7 @@ input, textarea, button {
 }
 
 /* scrollbar */
-::-webkit-scrollbar { width: 12px; height: 12px;}
+::-webkit-scrollbar { width: 8px; height: 8px;}
 ::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-corner { background-color: var(--background); }
 ::-webkit-scrollbar-thumb { background: var(--foreground); }
