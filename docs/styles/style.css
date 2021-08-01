@@ -26,21 +26,10 @@
     text-decoration: none;
 }
 
-body {
+html, body {
     box-sizing: border-box;    
     margin-top: var(--gap);
     background-color: var(--background);
-}
-
-#home {
-    padding: 0 var(--scaling);
-    background-color: var(--top);
-}
-
-#home h1 {
-    padding: calc(3*var(--scaling));
-    text-align: center;
-    border-bottom: 0.1rem solid white;
 }
 
 .segment {
@@ -108,11 +97,10 @@ input, textarea, button {
 
 textarea::-webkit-scrollbar {
    display: none;
- }
+}
 
 /* small screen formatting */
 @media screen and (max-width: 1024px) {
-    
 
     .container {
         flex-direction: column;

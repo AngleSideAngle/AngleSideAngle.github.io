@@ -5,7 +5,7 @@
         <title>AngleSideAngle</title>
         <link href = "styles/style.css" rel = "stylesheet">
         <link href = "styles/nav.css" rel = "stylesheet">
-        <link href = "styles/webring.css" rel = "stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
         <link href = "https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     </head>
@@ -15,22 +15,20 @@
                 <li><a href = "#about">About</a></li>
                 <li><a href = "#projects">Projects</a></li>
                 <li><a href = "#contact">Contact</a></li>
+                <li>
+                    <div id="webring-wrapper">
+                        <a href="https://webring.hackclub.com/" id="previousBtn" class="webring-anchor" title="Previous">‹</a>
+                        <a href="https://webring.hackclub.com/" class="webring-logo" title="Hack Club Webring" alt="Hack Club Webring"></a>
+                        <a href="https://webring.hackclub.com/" id="nextBtn" class="webring-anchor" title="Next">›</a>
+                        <script src="https://webring.hackclub.com/public/embed.min.js"></script>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div id = "about" class = "segment">
-            <div class="container">
-                <div>
-                    <h2>About</h2>
-                    <br>
-                    <p>Sections of this site are generated from my github profile using the github api</p>
-                </div>
-                <div id="webring-wrapper">
-                    <a href="https://webring.hackclub.com/" id="previousBtn" class="webring-anchor" title="Previous">‹</a>
-                    <a href="https://webring.hackclub.com/" class="webring-logo" title="Hack Club Webring" alt="Hack Club Webring"></a>
-                    <a href="https://webring.hackclub.com/" id="nextBtn" class="webring-anchor" title="Next">›</a>
-                    <script src="https://webring.hackclub.com/public/embed.min.js"></script>
-                </div>
-            </div>
+            <h2>About</h2>
+            <br>
+            <p>Sections of this site are generated from my github profile using the github api</p>
             <hr>
             <div class = "project">
                 <!-- About is auto generated in gen.js-->

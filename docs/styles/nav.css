@@ -6,13 +6,14 @@ nav {
 
 nav > ul {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
     list-style: none;
     background-color: var(--top);
     box-shadow: 0 1rem 2rem var(--shadow);
 }
 
-nav a {
+nav li > a {
     font-size: large;
     font-weight: bold;
     border-radius: var(--radius);
@@ -23,6 +24,6 @@ nav a {
     transition: background-color 500ms ease-in-out;
 }
 
-nav a:hover {
+nav li > a:hover {
     background-color: var(--top-hover);
 }
