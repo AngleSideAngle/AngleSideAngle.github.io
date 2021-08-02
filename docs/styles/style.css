@@ -26,7 +26,7 @@
     text-decoration: none;
 }
 
-html, body {
+body {
     box-sizing: border-box;    
     margin-top: var(--gap);
     background-color: var(--background);
@@ -79,6 +79,10 @@ html, body {
     margin-left: calc(4*var(--fixed));
 }
 
+.project a > svg {
+    display: none;
+}
+
 #projects {
     padding-top: 0;
 }
@@ -101,9 +105,16 @@ textarea::-webkit-scrollbar {
 
 /* small screen formatting */
 @media screen and (max-width: 1024px) {
+    nav {
+        position: static;
+    }
 
-    .container {
+    nav > .container {
         flex-direction: column;
+    }
+
+    body {
+        margin: 0;
     }
 
     .grid {
