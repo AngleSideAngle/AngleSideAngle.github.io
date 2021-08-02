@@ -17,7 +17,7 @@ ABOUT_REQUEST.send();
 
 ABOUT_REQUEST.onload = () => {
     if(ABOUT_REQUEST.status === 200) {
-        ABOUT.innerHTML = ABOUT_REQUEST.response;
+        ABOUT.innerHTML = ABOUT_REQUEST.response + ABOUT.innerHTML;
         console.log(ABOUT_REQUEST.response);
     } else {
         logError(ABOUT_REQUEST);

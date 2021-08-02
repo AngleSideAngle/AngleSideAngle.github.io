@@ -1,0 +1,52 @@
+.project > div {
+    box-sizing: border-box;
+    margin: var(--fixed);
+    padding: var(--fixed);
+    background-color: var(--foreground);
+    border-radius: var(--radius);
+    box-shadow: 0 0 2rem 0.1rem var(--shadow);
+    transition: 1s ease-in-out;
+}
+
+.project > div:hover { 
+    background-color: var(--blue);
+    box-shadow: 0 0 2rem 1rem var(--shadow);
+}
+
+.project p, .project h3, .project article {
+    padding: var(--fixed);
+}
+
+.project li {
+    padding: calc(var(--fixed)/2);
+    margin-left: calc(4*var(--fixed));
+}
+
+.project img {
+    width: 10rem;
+    height: auto;
+}
+
+.md a > svg {
+    display: none;
+}
+
+#projects {
+    padding-top: 0;
+}
+
+#contact {
+    background-color: var(--blue);
+    box-shadow: 0 -2rem 2rem 0.1rem var(--shadow);
+}
+
+input, textarea, button {
+    border-radius: calc(var(--radius)/2);
+    border: none;
+    padding: calc(var(--fixed)/2);
+    background-color: var(--foreground);
+}
+
+textarea::-webkit-scrollbar {
+   display: none;
+}
