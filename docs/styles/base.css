@@ -57,6 +57,17 @@ hr {
 }
 
 
+/* small screen formatting */
+@media screen and (max-width: 1024px) {
+    body {
+        margin: 0;
+    }
+
+    .grid {
+        grid-template-columns: auto;
+    }
+}
+
 /* scrollbar */
 ::-webkit-scrollbar { width: 8px; height: 8px;}
 ::-webkit-scrollbar-track { background: var(--background); }

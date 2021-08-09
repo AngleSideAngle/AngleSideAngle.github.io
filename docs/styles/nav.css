@@ -38,3 +38,10 @@ nav li > a:hover {
 .black {
     filter: invert(1);
 }
+
+/* small screen formatting */
+@media screen and (max-width: 1024px) {
+    nav {
+        position: static;
+    }
+}

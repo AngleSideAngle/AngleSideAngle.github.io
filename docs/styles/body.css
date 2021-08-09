@@ -50,19 +50,3 @@ input, textarea, button {
 textarea::-webkit-scrollbar {
    display: none;
 }
-
-
-/* small screen formatting */
-@media screen and (max-width: 1024px) {
-    nav {
-        position: static;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .grid {
-        grid-template-columns: auto;
-    }
-}
