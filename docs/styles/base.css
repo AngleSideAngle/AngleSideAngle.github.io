@@ -56,24 +56,6 @@ hr {
     grid-template: auto/1fr 1fr;
 }
 
-/* small screen formatting */
-@media screen and (max-width: 1024px) {
-    nav {
-        position: static;
-    }
-
-    .container {
-        flex-direction: column;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    .grid {
-        grid-template-columns: auto;
-    }
-}
 
 /* scrollbar */
 ::-webkit-scrollbar { width: 8px; height: 8px;}

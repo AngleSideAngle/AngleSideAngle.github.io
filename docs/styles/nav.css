@@ -32,5 +32,9 @@ nav li > a:hover {
 
 .external img {
     height: 2rem;
-    width: auto;
+    width: 2rem;
+}
+
+.black {
+    filter: invert(1);
 }
