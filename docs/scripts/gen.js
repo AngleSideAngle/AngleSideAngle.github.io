@@ -17,7 +17,7 @@ ABOUT_REQUEST.send();
 
 ABOUT_REQUEST.onload = () => {
     if(ABOUT_REQUEST.status === 200) {
-        ABOUT.innerHTML = ABOUT_REQUEST.response + ABOUT.innerHTML;
+        ABOUT.innerHTML += ABOUT_REQUEST.response;
         console.log(ABOUT_REQUEST.response);
     } else {
         logError(ABOUT_REQUEST);
@@ -38,7 +38,7 @@ PROJECT_REQUEST.onload = () => {
                 console.log(repo);
             }
         }
-        PROJECTS.innerHTML = projHTML;
+        PROJECTS.innerHTML += projHTML;
     } else {
         logError(PROJECT_REQUEST);
     }
