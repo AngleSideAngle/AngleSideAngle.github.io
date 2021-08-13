@@ -1,14 +1,12 @@
 /* variables */
 :root {
     /* colors */
-    --blue: #726EFF;
     
     --top: rgb(40,44,52);
-    --top-hover: #07B59A;
 
     --background: #212B38;
     --foreground: #37465B;
-    --interaction: #615DEE;
+    --interaction: #006994;
 
     --scaling: 3%;
     --fixed: 1rem;

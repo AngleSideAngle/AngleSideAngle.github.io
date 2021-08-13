@@ -9,7 +9,7 @@
 }
 
 .project > div:hover { 
-    background-color: var(--blue);
+    background-color: var(--interaction);
     box-shadow: 0 0 2rem 1rem var(--shadow);
 }
 
@@ -36,7 +36,7 @@
 }
 
 #contact {
-    background-color: var(--blue);
+    background-color: var(--interaction);
     box-shadow: 0 -2rem 2rem 0.1rem var(--shadow);
 }
 

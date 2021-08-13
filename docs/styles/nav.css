@@ -27,12 +27,16 @@ nav li > a {
 }
 
 nav li > a:hover {
-    background-color: var(--top-hover);
+    background-color: var(--interaction);
 }
 
 .external img {
     height: 2rem;
     width: 2rem;
+}
+
+.external > a {
+    margin: calc(var(--fixed)/2) ;
 }
 
 .black {
