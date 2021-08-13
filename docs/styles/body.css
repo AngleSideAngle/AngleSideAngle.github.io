@@ -19,7 +19,7 @@
 
 .project li {
     padding: calc(var(--fixed)/2);
-    margin-left: calc(4*var(--fixed));
+    margin-left: calc(2*var(--fixed));
 }
 
 .project img {
