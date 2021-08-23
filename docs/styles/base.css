@@ -12,8 +12,6 @@
     --fixed: 1rem;
     --radius: 9px;
     --shadow: rgb(0,0,0,0.4);
-
-    --gap: 4rem;
 }
 
 * { 
@@ -25,8 +23,10 @@
 }
 
 body {
-    box-sizing: border-box;    
-    margin-top: var(--gap);
+    box-sizing: border-box;
+}
+
+main {
     background-color: var(--background);
 }
 
