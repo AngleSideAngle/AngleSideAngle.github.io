@@ -1,4 +1,8 @@
-.project > div {
+#about > .container {
+    justify-content: start;
+}
+
+.project > div {    
     box-sizing: border-box;
     margin: var(--fixed);
     padding: var(--fixed);
@@ -29,15 +33,6 @@
 
 .md a > svg {
     display: none;
-}
-
-#projects {
-    padding-top: 0;
-}
-
-#contact {
-    background-color: var(--interaction);
-    box-shadow: 0 -2rem 2rem 0.1rem var(--shadow);
 }
 
 input, textarea, button {

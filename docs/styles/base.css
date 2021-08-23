@@ -24,6 +24,7 @@
 
 body {
     box-sizing: border-box;
+    background-color: var(--top);
 }
 
 main {
@@ -57,10 +58,6 @@ hr {
 
 /* small screen formatting */
 @media screen and (max-width: 1024px) {
-    body {
-        margin: 0;
-    }
-
     .grid {
         grid-template-columns: auto;
     }
