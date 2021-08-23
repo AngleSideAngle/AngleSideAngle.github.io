@@ -1,0 +1,4 @@
+iframe {
+    margin: var(--fixed);
+    border-radius: var(--radius);
+}
