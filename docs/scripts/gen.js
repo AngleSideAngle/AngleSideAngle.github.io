@@ -4,8 +4,11 @@ const PROJECT_REQUEST = new XMLHttpRequest();
 const ABOUT_DOM = document.getElementById("about").getElementsByClassName("project")[0];
 const PROJECT_DOM = document.getElementById("projects").getElementsByClassName("project")[0];
 
-const PROJECT_LIST = import('../data/projects.json')
-alert(PROJECT_LIST)
+const PROJECTS = [
+    "Half-Life",
+    "physics-game",
+    "starfish"
+]
 
 logError = (request) => {
     console.log(request)
@@ -46,7 +49,7 @@ PROJECT_REQUEST.onload = () => {
     if(PROJECT_REQUEST.status === 200) {
         response = JSON.parse(PROJECT_REQUEST.response);
         for(repo of response) {
-            if(repo.description && repo.fork == false) {
+            if(PROJECTS.includes(repo.name)) {
                 projHTML += projectBox(repo.name, repo.description, repo.html_url, repo.language);
                 console.log(repo);
             }
