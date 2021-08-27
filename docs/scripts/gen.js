@@ -9,7 +9,17 @@ logError = (request) => {
     console.log(`error: ${request.status}`)
 }
 
-let projectBox = (title, content, link) => `<div><a href = "${link}"><h3>${title}</h3><p>${content}</p></a></div>`;
+let projectBox = (title, content, link, language) => {
+    return (
+        `<div>
+            <a href = "${link}">
+                <h3>${title}</h3>
+                <p>${content}</p>
+                <span class="lang">${language}</span>
+            </a>
+        </div>`
+    )
+}
 
 ABOUT_REQUEST.open("GET", "https://api.github.com/repos/AngleSideAngle/AngleSideAngle/contents/README.md?ref=main");
 ABOUT_REQUEST.setRequestHeader("Accept", "application/vnd.github.3.html");
@@ -34,7 +44,7 @@ PROJECT_REQUEST.onload = () => {
         response = JSON.parse(PROJECT_REQUEST.response);
         for(repo of response) {
             if(repo.description && repo.fork == false) {
-                projHTML += projectBox(repo.name, repo.description, repo.html_url);
+                projHTML += projectBox(repo.name, repo.description, repo.html_url, repo.language);
                 console.log(repo);
             }
         }
