@@ -1,8 +1,11 @@
 const ABOUT_REQUEST = new XMLHttpRequest();
 const PROJECT_REQUEST = new XMLHttpRequest();
 
-const ABOUT = document.getElementById("about").getElementsByClassName("project")[0];
-const PROJECTS = document.getElementById("projects").getElementsByClassName("project")[0];
+const ABOUT_DOM = document.getElementById("about").getElementsByClassName("project")[0];
+const PROJECT_DOM = document.getElementById("projects").getElementsByClassName("project")[0];
+
+const PROJECT_LIST = import('../data/projects.json')
+alert(PROJECT_LIST)
 
 logError = (request) => {
     console.log(request)
@@ -27,7 +30,7 @@ ABOUT_REQUEST.send();
 
 ABOUT_REQUEST.onload = () => {
     if(ABOUT_REQUEST.status === 200) {
-        ABOUT.innerHTML += ABOUT_REQUEST.response;
+        ABOUT_DOM.innerHTML += ABOUT_REQUEST.response;
         console.log(ABOUT_REQUEST.response);
     } else {
         logError(ABOUT_REQUEST);
@@ -48,7 +51,7 @@ PROJECT_REQUEST.onload = () => {
                 console.log(repo);
             }
         }
-        PROJECTS.innerHTML += projHTML;
+        PROJECT_DOM.innerHTML += projHTML;
     } else {
         logError(PROJECT_REQUEST);
     }

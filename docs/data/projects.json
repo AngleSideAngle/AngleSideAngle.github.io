@@ -1,7 +1,7 @@
 {
     "projects" : [
         "Half-Life",
-        "starfish",
-        "physics-game"
+        "physics-game",
+        "starfish"
     ]
 }
