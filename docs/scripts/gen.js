@@ -5,7 +5,7 @@ const ABOUT_DOM = document.getElementById("about").getElementsByClassName("proje
 const PROJECT_DOM = document.getElementById("projects").getElementsByClassName("project")[0];
 
 const PROJECTS = [
-    "Half-Life",
+    "Hypotenuse-Leg",
     "physics-game",
     "starfish"
 ]
