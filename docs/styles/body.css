@@ -8,13 +8,13 @@
     padding: var(--fixed);
     background-color: var(--foreground);
     border-radius: var(--radius);
-    box-shadow: 0 0 2rem 0.1rem var(--shadow);
+    /* box-shadow: 0 0 1rem var(--shadow); */
     transition: 1s ease-in-out;
 }
 
 .project > div:hover { 
     background-color: var(--interaction);
-    box-shadow: 0 0 2rem 1rem var(--shadow);
+    box-shadow: 0 0 1rem var(--shadow);
 }
 
 .project p, .project h3, .project article {

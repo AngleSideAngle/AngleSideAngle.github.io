@@ -41,7 +41,7 @@ ABOUT_REQUEST.onload = () => {
 }
 
 
-PROJECT_REQUEST.open("GET", "https://api.github.com/users/AngleSideAngle/repos");
+PROJECT_REQUEST.open("GET", "https://api.github.com/users/AngleSideAngle/repos?sort=pushed");
 PROJECT_REQUEST.send();
 
 PROJECT_REQUEST.onload = () => {
@@ -49,7 +49,7 @@ PROJECT_REQUEST.onload = () => {
     if(PROJECT_REQUEST.status === 200) {
         response = JSON.parse(PROJECT_REQUEST.response);
         for(repo of response) {
-            if(PROJECTS.includes(repo.name)) {
+            if(repo.description && !repo.fork && repo.language) {
                 projHTML += projectBox(repo.name, repo.description, repo.html_url, repo.language);
                 console.log(repo);
             }

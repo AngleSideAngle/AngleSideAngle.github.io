@@ -1,6 +1,6 @@
 nav {
     width: 100%;
-    position: sticky;
+    position: static;
     top: 0;
 }
 
@@ -12,7 +12,6 @@ nav > ul {
     justify-content: space-between;
     list-style: none;
     background-color: var(--top);
-    box-shadow: 0 1rem 2rem var(--shadow);
 }
 
 nav li > a {
@@ -39,17 +38,6 @@ nav li > a:hover {
     margin: calc(var(--fixed)/2) ;
 }
 
-.black {
+.inv {
     filter: invert(1);
-}
-
-/* small screen formatting */
-@media screen and (max-width: 1024px) {
-    nav {
-        position: static;
-    }
-
-    nav > ul {
-        box-shadow: none;
-    }
 }

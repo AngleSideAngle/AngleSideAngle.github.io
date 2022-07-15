@@ -1,4 +1,5 @@
 iframe {
     margin: var(--fixed);
     border-radius: var(--radius);
+    max-width: fit-content;
 }
