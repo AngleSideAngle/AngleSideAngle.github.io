@@ -1,7 +1,3 @@
-#about > .container {
-    justify-content: start;
-}
-
 .project > div {
     box-sizing: border-box;
     margin: var(--fixed);
