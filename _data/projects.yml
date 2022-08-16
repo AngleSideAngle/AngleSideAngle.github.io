@@ -1,0 +1,6 @@
+- name: Hypotenuse Leg
+  url: https://github.com/AngleSideAngle/Hypotenuse-Leg
+  desc: A discord bot that allows you to interactively establish two way communication between any channels 
+- name: Discord TUI
+  url: https://github.com/AngleSideAngle/disc-tui
+  desc: HL on a tui, written in rust
