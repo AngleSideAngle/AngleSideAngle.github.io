@@ -1,6 +1,6 @@
 nav {
-    width: 100%;
-    position: static;
+    /* width: 100%; */
+    position: sticky;
     top: 0;
 }
 
@@ -9,9 +9,10 @@ nav .container {
 }
 
 nav > ul {
+    max-width: var(--width);
     justify-content: space-between;
     list-style: none;
-    background-color: var(--top);
+    background-color: var(--background);
 }
 
 nav li > a {
@@ -22,7 +23,7 @@ nav li > a {
     display: block;
     margin: var(--fixed) 0;
     padding: var(--fixed);
-    transition: background-color 500ms ease-in-out;
+    transition: background-color 300ms ease-in-out;
 }
 
 nav li > a:hover {
