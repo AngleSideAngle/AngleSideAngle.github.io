@@ -2,6 +2,7 @@ nav {
     /* width: 100%; */
     position: sticky;
     top: 0;
+    background-color: $interaction;
 }
 
 nav .container {
@@ -12,7 +13,7 @@ nav > ul {
     max-width: var(--width);
     justify-content: space-between;
     list-style: none;
-    background-color: var(--background);
+    background-color: $background;
 }
 
 nav li > a {
@@ -27,7 +28,7 @@ nav li > a {
 }
 
 nav li > a:hover {
-    background-color: var(--interaction);
+    background-color: $interaction;
 }
 
 .external img {

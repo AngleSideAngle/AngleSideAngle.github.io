@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,15 +12,50 @@
     </head>
 
     <body>
-        <div class="container"> 
-            <h1>{{ page.title }}</h1>
-            
-            {{ content }}
-            <div class="footer">
-                <a href="https://github.com/AngleSideAngle/AngleSideAngle.github.io">source code</a>
-                <br>
-                Inspired (heavily) by <a href="https://aidenybai.com/">Aiden Bai</a>
-            </div>
+        <nav>
+            <ul class="container">
+                {% for item in site.data.nav %}
+                    <li>
+                        <a href="{{ item.link }}">
+                            {{ item.name }}
+                            <!-- {% if item contains image %} -->
+                            <img src="{{ item.image }}" alt="{{ item.name }}">
+                            <!-- {% endif %} -->
+                        </a>
+                    </li>
+                    
+                {% endfor %}
+                <!-- <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="music.html">Playlist</a></li>
+                <li class="external container">
+                    <a href="mailto:asapaparo@gmail.com">
+                        <img class="inv" src="{{ data.images.mail.svg }}" alt="Email">
+                    </a>
+                    <a href="https://github.com/AngleSideAngle" target="_blank" rel="noopener noreferrer">
+                        <img src="images/GitHub.png" alt="GitHub">
+                    </a>
+                    <a href="https://discord.com/users/547910268081143830" target="_blank" rel="noopener noreferrer">
+                        <img src="images/Discord.svg" alt="Discord">
+                    </a>
+                    <div id="webring-wrapper">
+                        <a href="https://webring.hackclub.com/" id="previousBtn" class="webring-anchor" title="Previous">‹</a>
+                        <a href="https://webring.hackclub.com/" class="webring-logo" title="Hack Club Webring"
+                            alt="Hack Club Webring"></a>
+                        <a href="https://webring.hackclub.com/" id="nextBtn" class="webring-anchor" title="Next">›</a>
+                        <script src="https://webring.hackclub.com/public/embed.min.js"></script>
+                    </div>
+        
+                </li> -->
+            </ul>
+        </nav>
+        <!-- <h1>{{ page.title }}</h1> -->
+        
+        {{ content }}
+        <div class="footer">
+            <a href="https://github.com/AngleSideAngle/AngleSideAngle.github.io">source code</a>
+            <br>
+            Inspired (heavily) by <a href="https://aidenybai.com/">Aiden Bai</a>
         </div>
     </body>
 

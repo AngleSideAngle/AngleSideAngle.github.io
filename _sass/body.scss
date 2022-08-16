@@ -1,19 +1,21 @@
-.project > div {
+.project>div {
     box-sizing: border-box;
     margin: var(--fixed);
     padding: var(--fixed);
-    background-color: var(--foreground);
+    background-color: $foreground;
     border-radius: var(--radius);
     /* box-shadow: 0 0 1rem var(--shadow); */
     transition: 1s ease-in-out;
 }
 
-.project > div:hover { 
-    background-color: var(--interaction);
+.project>div:hover {
+    background-color: $interaction;
     box-shadow: 0 0 1rem var(--shadow);
 }
 
-.project p, .project h3, .project article {
+.project p,
+.project h3,
+.project article {
     padding: var(--fixed);
 }
 
@@ -33,6 +35,6 @@
     float: right;
 }
 
-.md a > svg {
+.md a>svg {
     display: none;
 }
