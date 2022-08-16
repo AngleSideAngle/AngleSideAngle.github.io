@@ -1,14 +1,13 @@
-.project>div {
+.project > div{
     box-sizing: border-box;
     margin: var(--fixed);
     padding: var(--fixed);
     background-color: $foreground;
     border-radius: var(--radius);
-    /* box-shadow: 0 0 1rem var(--shadow); */
-    transition: 1s ease-in-out;
+    transition: 500ms ease-in-out;
 }
 
-.project>div:hover {
+.project > div:hover {
     background-color: $interaction;
     box-shadow: 0 0 1rem var(--shadow);
 }

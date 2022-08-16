@@ -1,8 +1,10 @@
 $fonts: 'Inter', sans-serif;
-$background: #212B38;
-// 2B3A4C
-$foreground: #37465B;
-$interaction: #006994;
+$background: #080810;
+// background: 212B38
+// fg: 2B3A4C
+// inter: 37465B
+$foreground: #142832;
+$interaction: #14323c;
 $normal: white;
 $bold: black;
 $accent: yellow;
@@ -12,12 +14,12 @@ $width: 50rem;
 * {
     margin: 0;
     padding: 0;
+    color: $normal;
 }
 
 body {
     font-family: $fonts;
     background-color: $background;
-    color: $normal;
 }
 
 .footer {
@@ -60,10 +62,6 @@ hr {
     display: grid;
     grid-gap: calc(var(--fixed)/2);
     grid-template: auto/1fr 1fr;
-}
-
-a {
-    color: white;
 }
 
 /* small screen formatting */

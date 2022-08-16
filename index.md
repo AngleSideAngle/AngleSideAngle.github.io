@@ -8,7 +8,6 @@ title: Asa Paparo
         <h2>About</h2>
         <br>
         <p>Sections of this site are generated from my github profile using the github api</p>
-        <p>Please note that I am no professional web designer</p>
         <hr>
         <div class="project container">
             <!-- About is auto generated in gen.js-->
@@ -23,17 +22,17 @@ title: Asa Paparo
         </div>
     </section>
 
-    <section id="articles">
-        <h2>Articles</h2>
+    <section id="posts">
+        <h2>Posts</h2>
         <hr>
-        <ul>
-            {% for prj in site.data.projects %}
+        <!-- <ul>
+            {% for post in site.posts %}
             <li>
-                <h2><a href="{{ prj.url }}">{{ prj.name }}</a></h2>
-                {{ prj.desc }}
+                <h2><a href="{{ post.url }}">{{ post.name }}</a></h2>
+                {{ post.desc }}
             </li>
             {% endfor %}
-        </ul>
+        </ul> -->
     </section>
 </main>
 

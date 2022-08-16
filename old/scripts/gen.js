@@ -2,13 +2,7 @@ const ABOUT_REQUEST = new XMLHttpRequest();
 const PROJECT_REQUEST = new XMLHttpRequest();
 
 const ABOUT_DOM = document.getElementById("about").getElementsByClassName("project")[0];
-const PROJECT_DOM = document.getElementById("projects").getElementsByClassName("project")[0];
-
-const PROJECTS = [
-    "Hypotenuse-Leg",
-    "physics-game",
-    "starfish"
-]
+const PROJECT_DOM = document.getElementById("projects").getElementsByClassName("grid")[0];
 
 logError = (request) => {
     console.log(request)
@@ -20,9 +14,9 @@ let projectBox = (title, content, link, language) => {
         `<div>
             <a href = "${link}">
                 <h3>${title}</h3>
-                <p>${content}</p>
-                <span class="lang">${language}</span>
             </a>
+            <p>${content}</p>
+            <span class="lang">${language}</span>
         </div>`
     )
 }
