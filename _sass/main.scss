@@ -11,7 +11,6 @@ $accent: yellow;
 // $shadow: rgb(0, 0, 0, 0.3);
 $width: 50rem;
 $spacing: 1rem;
-$var-spacing: 1rem;
 $radius: 9px;
 
 * {
@@ -21,6 +20,14 @@ $radius: 9px;
 body {
     font-family: $fonts;
     background-color: $background;
+}
+
+p,
+li,
+summary {
+    font-size: 1.15rem;
+    letter-spacing: 0.01rem;
+    line-height: 1.8rem;
 }
 
 .footer {
@@ -34,7 +41,7 @@ body > * {
 }
 
 section {
-    padding: $var-spacing;
+    padding: $spacing;
 }
 
 hr {
@@ -44,7 +51,7 @@ hr {
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .container > * {
@@ -58,10 +65,7 @@ hr {
 }
 
 nav {
-    padding: 0;
-
     ul {
-        justify-content: space-between;
         list-style: none;
         background-color: $background;
         padding: 0;
@@ -89,7 +93,7 @@ nav {
 }
 
 /* small screen formatting */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 600px) {
     .grid {
         grid-template-columns: auto;
     }
@@ -111,4 +115,8 @@ nav {
 
 ::-webkit-scrollbar-thumb {
     background: $foreground;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $interaction;
 }
