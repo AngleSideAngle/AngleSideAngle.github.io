@@ -1,9 +1,9 @@
 - name: About
-  link: "#about"
+  link: "/#about"
 - name: Projects
-  link: "#projects"
+  link: "/#projects"
 - name: Posts
-  link: "#posts"
+  link: "/#posts"
 - name: GitHub
   link: https://github.com/AngleSideAngle
   image: /images/GitHub.png

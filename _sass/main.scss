@@ -1,33 +1,76 @@
 $fonts: 'Inter', sans-serif;
-$background: #060608;
+$background: #101216;
+// old
 // background: 212B38
 // fg: 2B3A4C
 // inter: 37465B
-$foreground: #142832;
+$foreground: #142832; // unused atm, previously for cards
 $interaction: #14323c;
-$normal-text: hsl(0, 0, 85%);
-$bold: black;
-$accent: yellow;
-// $shadow: rgb(0, 0, 0, 0.3);
+$normal-text: hsl(0, 0, 65%);
+$semibold: hsl(0, 0, 75%);
+$bold: hsl(0, 0, 80%);
+$underline: hsl(0, 0, 50);
+$highlight: $interaction;
+
 $width: 50rem;
 $spacing: 1rem;
 $radius: 9px;
 
-* {
-    color: $normal-text;
-}
+// * {
+//     color: $normal-text;
+// }
 
 body {
     font-family: $fonts;
     background-color: $background;
+    color: $normal-text;
 }
 
 p,
 li,
-summary {
-    font-size: 1.15rem;
-    letter-spacing: 0.01rem;
-    line-height: 1.8rem;
+span {
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+a,
+strong {
+    font-weight: 500;
+    color: $semibold;
+}
+
+::selection {
+    background: $highlight;
+    color: white;
+}
+
+h1,
+h2,
+h3 {
+    color: $bold;
+    a {
+        font-weight: unset;
+    }
+}
+
+h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-underline-position: from-font;
+    text-decoration-color: $underline;
+    text-underline-offset: -1px;
+    text-decoration-thickness: from-font;
+    transition: all 0.1s ease;
+    text-decoration-style: solid;
+    outline: none;
+}
+
+a:hover {
+    background: $interaction;
+    border-radius: 0.3rem;
 }
 
 .footer {
@@ -38,10 +81,6 @@ body > * {
     margin-left: auto;
     margin-right: auto;
     max-width: $width;
-}
-
-section {
-    padding: $spacing;
 }
 
 hr {
@@ -67,7 +106,6 @@ hr {
 nav {
     ul {
         list-style: none;
-        background-color: $background;
         padding: 0;
     }
 
@@ -75,14 +113,8 @@ nav {
         text-decoration: none;
         font-size: large;
         font-weight: bold;
-        border-radius: $radius;
         display: block;
         padding: $spacing;
-        transition: background-color 300ms ease-in-out;
-    }
-
-    li > a:hover {
-        background-color: $interaction;
     }
 }
 
@@ -90,6 +122,10 @@ nav {
     margin-top: $spacing;
     margin-bottom: $spacing;
     text-align: center;
+}
+
+.md a > svg {
+    display: none;
 }
 
 /* small screen formatting */

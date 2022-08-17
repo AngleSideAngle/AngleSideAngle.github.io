@@ -1,8 +1,8 @@
 const ABOUT_REQUEST = new XMLHttpRequest();
 const PROJECT_REQUEST = new XMLHttpRequest();
 
-const ABOUT_DOM = document.getElementById("about").getElementsByClassName("project")[0];
-const PROJECT_DOM = document.getElementById("projects").getElementsByClassName("grid")[0];
+const ABOUT_DOM = document.getElementById("about");
+const PROJECT_DOM = document.getElementById("projects");
 
 logError = (request) => {
     console.log(request)
@@ -12,9 +12,11 @@ logError = (request) => {
 let projectBox = (title, content, link, language) => {
     return (
         `<div>
-            <a href = "${link}">
-                <h3>${title}</h3>
-            </a>
+            <h3>
+                <a href = "${link}">
+                    ${title}
+                </a>
+            </h3>
             <p>${content}</p>
             <span class="lang">${language}</span>
         </div>`
@@ -53,7 +55,7 @@ PROJECT_REQUEST.onload = () => {
             projHTML += projectBox(repo.name, repo.description, repo.html_url, repo.language);
             console.log(repo);
             count++;
-            if (count > 3) {
+            if (count > 2) {
                 break;
             }
         }
