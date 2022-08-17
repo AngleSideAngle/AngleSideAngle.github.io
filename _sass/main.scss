@@ -10,10 +10,11 @@ $bold: black;
 $accent: yellow;
 // $shadow: rgb(0, 0, 0, 0.3);
 $width: 50rem;
+$spacing: 1rem;
+$var-spacing: 1rem;
+$radius: 9px;
 
 * {
-    margin: 0;
-    padding: 0;
     color: $normal-text;
 }
 
@@ -26,14 +27,6 @@ body {
     font-size: small;
 }
 
-
-/* variables */
-:root {
-    --scaling: 3%;
-    --fixed: 1rem;
-    --radius: 9px;
-}
-
 body > * {
     margin-left: auto;
     margin-right: auto;
@@ -41,11 +34,11 @@ body > * {
 }
 
 section {
-    padding: var(--scaling);
+    padding: $var-spacing;
 }
 
 hr {
-    margin: var(--fixed) 0;
+    margin: $spacing 0;
 }
 
 .container {
@@ -55,13 +48,44 @@ hr {
 }
 
 .container > * {
-    margin: 0 var(--fixed);
+    margin: 0 $spacing;
 }
 
 .grid {
     display: grid;
-    grid-gap: calc(var(--fixed)/2);
+    grid-gap: calc($spacing / 2);
     grid-template: auto/1fr 1fr;
+}
+
+nav {
+    padding: 0;
+
+    ul {
+        justify-content: space-between;
+        list-style: none;
+        background-color: $background;
+        padding: 0;
+    }
+
+    li > a {
+        text-decoration: none;
+        font-size: large;
+        font-weight: bold;
+        border-radius: $radius;
+        display: block;
+        padding: $spacing;
+        transition: background-color 300ms ease-in-out;
+    }
+
+    li > a:hover {
+        background-color: $interaction;
+    }
+}
+
+.footer {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+    text-align: center;
 }
 
 /* small screen formatting */

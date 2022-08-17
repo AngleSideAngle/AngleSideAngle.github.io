@@ -1,39 +1,30 @@
-.project > div{
+.project > div {
     box-sizing: border-box;
-    margin: var(--fixed);
-    padding: var(--fixed);
+    margin: $spacing;
+    padding-left: $spacing;
+    padding-right: $spacing;
     background-color: $foreground;
-    border-radius: var(--radius);
+    border-radius: $radius;
     transition: 500ms ease-in-out;
 }
 
 .project > div:hover {
     background-color: $interaction;
-    box-shadow: 0 0 1rem var(--shadow);
 }
 
 .project p,
 .project h3,
 .project article {
-    padding: var(--fixed);
-}
-
-.project li {
-    padding: calc(var(--fixed)/2);
-    margin-left: calc(2*var(--fixed));
-}
-
-.project img {
-    width: 10rem;
-    height: auto;
+    padding: $spacing;
 }
 
 .project .lang {
     font-size: large;
     font-weight: bold;
     float: right;
+    margin-bottom: $spacing;
 }
 
-.md a>svg {
+.md a > svg {
     display: none;
 }
