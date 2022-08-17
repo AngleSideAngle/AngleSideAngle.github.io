@@ -26,7 +26,7 @@ ABOUT_REQUEST.setRequestHeader("Accept", "application/vnd.github.3.html");
 ABOUT_REQUEST.send();
 
 ABOUT_REQUEST.onload = () => {
-    if(ABOUT_REQUEST.status === 200) {
+    if (ABOUT_REQUEST.status === 200) {
         ABOUT_DOM.innerHTML += ABOUT_REQUEST.response;
         console.log(ABOUT_REQUEST.response);
     } else {
@@ -40,12 +40,21 @@ PROJECT_REQUEST.send();
 
 PROJECT_REQUEST.onload = () => {
     let projHTML = "";
-    if(PROJECT_REQUEST.status === 200) {
+    if (PROJECT_REQUEST.status === 200) {
         response = JSON.parse(PROJECT_REQUEST.response);
-        for(repo of response) {
-            if(repo.description && !repo.fork && repo.language) {
-                projHTML += projectBox(repo.name, repo.description, repo.html_url, repo.language);
-                console.log(repo);
+        let count = 0;
+        for (repo of response) {
+            if (!repo.language || !repo.description) {
+                continue;
+            }
+            if (repo.fork) {
+                repo.description = "[fork] " + repo.description;
+            }
+            projHTML += projectBox(repo.name, repo.description, repo.html_url, repo.language);
+            console.log(repo);
+            count++;
+            if (count > 3) {
+                break;
             }
         }
         PROJECT_DOM.innerHTML += projHTML;
