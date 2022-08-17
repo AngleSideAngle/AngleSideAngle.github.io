@@ -26,4 +26,4 @@ title: Asa Paparo
         {% endfor %}
 </section>
 
-<script src="scripts/gen.js"></script>
+<script src="assets/scripts/gen.js"></script>

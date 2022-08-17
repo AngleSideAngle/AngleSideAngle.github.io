@@ -3,7 +3,7 @@ $background: #101216;
 // old
 // background: 212B38
 // fg: 2B3A4C
-// inter: 37465B
+// interaction: 37465B
 $foreground: #142832; // unused atm, previously for cards
 $interaction: #14323c;
 $normal-text: hsl(0, 0, 65%);
@@ -15,10 +15,6 @@ $highlight: $interaction;
 $width: 50rem;
 $spacing: 1rem;
 $radius: 9px;
-
-// * {
-//     color: $normal-text;
-// }
 
 body {
     font-family: $fonts;
@@ -138,9 +134,9 @@ nav {
 }
 
 /* small screen formatting */
-@media screen and (max-width: 600px) {
-    .grid {
-        grid-template-columns: auto;
+@media screen and (max-width: 800px) {
+    nav {
+        display: none;
     }
 }
 
