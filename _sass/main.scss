@@ -7,8 +7,8 @@ $background: #101216;
 $foreground: #142832; // unused atm, previously for cards
 $interaction: #14323c;
 $normal-text: hsl(0, 0, 65%);
-$semibold: hsl(0, 0, 75%);
-$bold: hsl(0, 0, 80%);
+$semibold: hsl(0, 0, 80%);
+$bold: hsl(0, 0, 85%);
 $underline: hsl(0, 0, 50);
 $highlight: $interaction;
 
@@ -26,11 +26,20 @@ body {
     color: $normal-text;
 }
 
+main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-color: rgba($normal-text, $alpha: 0.3);
+    border-width: 0 3px;
+    border-style: dashed;
+}
+
 p,
 li,
 span {
     font-size: 1.1rem;
     line-height: 1.2;
+    font-weight: 400;
 }
 
 a,
