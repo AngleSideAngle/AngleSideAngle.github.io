@@ -78,6 +78,11 @@ a:hover {
     border-radius: 0.3rem;
 }
 
+pre {
+    padding: $spacing;
+    border-radius: $radius;
+}
+
 .footer {
     font-size: small;
 }
@@ -89,7 +94,8 @@ body > * {
 }
 
 hr {
-    margin: $spacing 0;
+    border: 3px solid $interaction;
+    border-radius: 2px;
 }
 
 .container {
