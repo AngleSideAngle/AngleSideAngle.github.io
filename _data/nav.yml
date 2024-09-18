@@ -6,10 +6,7 @@
   link: "/#posts"
 - name: GitHub
   link: https://github.com/AngleSideAngle
-  image: /images/GitHub.png
 - name: Email
   link: mailto:asapaparo@gmail.com
-  image: /images/mail.svg
-- name: Discord
-  link: https://discord.com/users/547910268081143830
-  image: /images/Discord.svg
+- name: Resume
+  link: https://raw.githubusercontent.com/AngleSideAngle/AngleSideAngle/refs/heads/main/cv.pdf
