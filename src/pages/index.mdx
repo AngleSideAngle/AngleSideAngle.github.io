@@ -1,12 +1,15 @@
 ---
 layout: ../layouts/Page.astro
-title: I'm Asa Paparo
-description: Asa's personal website
+title: "Asa Paparo"
+description: "Asa's personal website"
 ---
+
+import Posts from '../components/Posts.astro';
 
 # I'm Asa Paparo
 
 Welcome to my website! I'm an undergraduate student at MIT interested in robotics and operating systems.
+
 
 Currently, I'm working on the autonomous racing subteam of [MIT Motorsports](https://www.fsae.mit.edu/). We're developing a self driving racecar to compete in the upcoming [Formula SAE](https://www.fsaeonline.com/) driverless challenge.
 
@@ -16,10 +19,14 @@ In my free time, I enjoy biking and messing with computers. I'll get to polishin
 
 In high school, I was programming lead for [FRC](https://www.firstinspires.org/robotics/frc) team 1155, the [SciBorgs](https://github.com/sciborgs). I occassionally volunteer to help run competitions.
 
-Find me at \
-[asapaparo@gmail.com](mailto:asapaparo@gmail.com) \
-[@AngleSideAngle@mastodon.social](https://mastodon.social/@AngleSideAngle) \
-or, \
-[github](https://github.com/AngleSideAngle) \
-[linkedin](https://www.linkedin.com/in/asa-paparo) \
-[twitter](https://x.com/SideAngleAngle)
+### Recent Posts
+
+<Posts n={3}/>
+
+<a href="./blog"><h4>All Posts</h4></a>
+
+### Reach me at
+[email](mailto:asapaparo@gmail.com)
+[fediverse](https://mastodon.social/@AngleSideAngle)
+[github](https://github.com/AngleSideAngle)
+[linkedin](https://www.linkedin.com/in/asa-paparo)
