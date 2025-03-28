@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = 'Asa Paparo';
 export const SITE_DESCRIPTION = 'Welcome to my website!';
+export const SOURCE_URL = 'https://github.com/AngleSideAngle/AngleSideAngle.github.io/tree/main/';
