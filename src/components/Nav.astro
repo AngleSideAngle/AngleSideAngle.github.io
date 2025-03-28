@@ -1,0 +1,24 @@
+---
+const { pathname } = Astro.url;
+const segments = pathname.split('/').filter(segment => segment && segment != "index.html");
+
+const breadcrumb = [{ label: 'home', url: '/index.html' }];
+
+let currentUrl = '';
+segments.forEach(segment => {
+  currentUrl += `/${segment}`;
+  breadcrumb.push({ label: segment, url: currentUrl });
+});
+---
+
+<!-- maybe vibe coding isn't that bad... -->
+<nav aria-label="Navigation Path">
+  {breadcrumb.map((crumb, index) => (
+    <>
+      <a href={crumb.url}>{crumb.label}</a>
+      {/* Render a separator if this isn’t the last item */}
+      {index < breadcrumb.length - 1 && <span class="ml-1 mr-1">/</span>}
+    </>
+  ))}
+</nav>
+

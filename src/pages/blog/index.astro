@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Nav from '../../components/Nav.astro';
+import Posts from '../../components/Posts.astro';
+
+import Page from '../../layouts/Page.astro';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Page title="Posts" description="A list of Asa's blog posts">
+	<Nav />
+	<Posts />
+</Page>

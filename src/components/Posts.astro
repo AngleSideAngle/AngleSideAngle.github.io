@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+const { n } = Astro.props;
+
+const postCollection = await getCollection('blog');
+
+const posts = postCollection
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, n ?? postCollection.length);
+---
+
+	<section>
+			{
+				posts.map((post) => (
+						<a href={`/blog/${post.id}/`}>
+							<h4 class="title">{post.data.title}</h4>
+							<p class="date">
+								<FormattedDate date={post.data.pubDate} />
+							</p>
+						</a>
+				))
+			}
+	</section>
