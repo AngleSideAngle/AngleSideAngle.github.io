@@ -1,7 +1,7 @@
 ---
 title: 'The Fundamental Flaw with Containerized Development'
 description: 'Oh boy'
-pubDate: '03/27/2025'
+pubDate: '03/29/2025'
 ---
 
 This article was initially going to be titled "Rant About Developing Software on Immutable Linux," but the scope continued to increase as I wrote. Fortunately, the much longer first draft was deleted because I forgot to push it to version control before wiping my laptop and installing NixOS, so this version is more concise.
@@ -10,7 +10,7 @@ This article was initially going to be titled "Rant About Developing Software on
 
 Around spring 2024, I bought a new laptop. My old one had <abbr title="Do Not buy a Dell Inspiron 2-in-1">melted its hinges apart</abbr> and was (quite literally) held together by duct tape. Going into college, I wanted my computer to be as stable as possible, and Linux was non-negotiable. To this end, I decided to install [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/), a distribution of Fedora advertising itself as being pretty much unbreakable.
 
-Silverblue is one of many "Atomic" Linux distributions, others including [Vanilla OS](https://vanillaos.org/), [Bazzite](https://bazzite.gg/), and even [ChromeOS](https://chromeos.google/). These distributions are atomic/immutable, in that their core system is based on an image and cannot be easily modified to install additional packages. In the case of Silverblue, `rpm-ostree` is used to handle transactional updates, comparing the local system to the latest upstream commit, exactly like a version control system. Applications are preferably installed as [Flatpaks](https://flatpak.org/), which are sandboxed from the home system and updated separately, and anything else is supposed to be done using a tool called [Toolbx](https://containertoolbx.org/) (more on this later). Some major advantages of atomic distros is that, unlike traditional Linux systems, they pretty difficult to break or clutter with unnecessary packages.
+Silverblue is one of many "Atomic" Linux distributions, others including [Vanilla OS](https://vanillaos.org/), [Bazzite](https://bazzite.gg/), and even [ChromeOS](https://chromeos.google/). These distributions are atomic/immutable, in that their core system is based on an image and cannot be easily modified to install additional packages. In the case of Silverblue, `rpm-ostree` is used to handle transactional updates, comparing the local system to the latest upstream commit, exactly like a version control system. Applications are preferably installed as [Flatpaks](https://flatpak.org/), which are sandboxed from the home system and updated separately, and anything else is supposed to be done using a tool called [`toolbx`](https://containertoolbx.org/) (more on this later). Some major advantages of atomic distros is that, unlike traditional Linux systems, they pretty difficult to break or clutter with unnecessary packages.
 
 ## Toolboxes
 
@@ -22,7 +22,7 @@ However, there are multiple flaws when it comes to actually using toolboxes to m
 
 Since most container images are heavily minified for cloud deployment, they often lack basic command line utilities, a prompt, man pages, etc. This means toolbx only works with a set of premade images for specific distros that have had these tools injected back in. It's unrealistic to set up a new toolbox-ified image for every project you need to work in. And, since it's equally unrealistic to expect every project to maintain a toolbx compatible image just so some developers on linux can contribute, toolbx is effectively unusable for software development.
 
-2. Toolbx always the mounts the home directory into your container.
+2. Toolbx always mounts the home directory into your container.
 
 To demonstrate the implications of this on software development, let's set up a new toolbox.
 ```sh
@@ -73,9 +73,8 @@ One useful tool distrobox provides is called `distrobox-assemble`. It allows us 
 [my_distrobox]
 additional_packages="git vim tmux"
 image=ros:jazzy
-init=false
 nvidia=true
-init_hooks"install_random_stuff_that_isnt_in_apt"
+init_hooks="install_random_stuff_that_isnt_in_apt"
 home=/tmp/example_home # isolation!!?
 ```
 
@@ -145,7 +144,7 @@ I was able to use a setup that involved using init scripts to curl a bunch of bi
 
 ## Devcontainers
 
-Devcontainers are a more popular way to go about developing software inside a container than toolbx and distrobox. Projects can define metadata according to the (theoretically) editor-agnostic [specification](https://containers.dev/implementors/json_reference/), which enables supporting tools to mount the project directory into container environments. This sounds great, and it almost is. However, aside from the de-facto implementation being a proprietary vscode extension, there are a few areas that make this specification unfit for the goals we have defined.
+Devcontainers are a more popular way to go about developing software inside a container than toolbx and distrobox. Projects can define metadata according to the (theoretically) editor-agnostic [specification](https://containers.dev/implementors/json_reference/), which enables supporting tools to mount the project directory into container environments. This sounds great, and it almost is. However, aside from the de facto implementation being a proprietary vscode extension, there are a few areas that make this specification unfit for the goals we have defined.
 
 - [x] Projects must be able to define reproducible environments.
 
@@ -170,13 +169,13 @@ The devcontainer spec supports a concept called [features](https://containers.de
 }
 ```
 
-Wait a minute... the `devcontainer.json` is a configuration for the project's environment that *everyone* will use. This means if a contributor clones a repository and wants to edit it with neovim and zellij, they're going to have to gitignore their `devcontainer.json`, or beg upstream to install their preferred tools in everyone's workspace. This certainly isn't a workable system.
+Wait a minute... the `devcontainer.json` is a configuration for the project's environment that *everyone* will use. This means if a contributor clones a repository and wants to edit it with neovim and zellij, they're going to have to gitignore their `devcontainer.json`, or beg upstream to install their preferred tools in everyone's workspace. This certainly isn't workable.
 
 But wait again, you don't have to manually add a `vscode-server` feature to all your projects. How does Microsoft do it? The answer is that I can't tell you because I don't know. VSCode server is proprietary. Presumably, the vscode server binary that vscode installs into root of every container it connects to is completely statically linked, a luxury we do not have in our goal of making arbitrary development environments compatible with arbitrary developer tools.
 
 The next thing I thought of was injecting features into containers. It's conceivable for a tool to be able to use devcontainers with a set of user-defined additional features. This, too, falls apart if we examine it further.
 
-Examining the source code for the [cowsay feature](https://github.com/joshspicer/more-features/blob/aa8d4b137b122aab0f2ed81d9f22a436ff0af787/src/cowsay/devcontainer-feature.json), which installs the `cowsay` package, we find
+Examining the source code for the [cowsay feature](https://github.com/joshspicer/more-features/blob/aa8d4b137b122aab0f2ed81d9f22a436ff0af787/src/cowsay/devcontainer-feature.json), which installs the `cowsay` package, we find:
 
 ```
 cowsay
@@ -185,7 +184,7 @@ cowsay
 └── install.sh
 ```
 
-The `insstall.sh` script installs a simple cow talking to `/usr/local/bin/cowsay`, and the `devcontainer-feature.json` defines the properties of our feature. Inside the json file, we find
+The `install.sh` script installs a simple cow talking to `/usr/local/bin/cowsay`, and the `devcontainer-feature.json` defines the properties of our feature. Inside the json file, we find:
 
 ```json
 "installsAfter": [
@@ -272,7 +271,7 @@ COPY --from=builder /tmp/profile /yadt-bin
 
 This Dockerfile installs a user-specified set of packages into a layer on top of an arbitrary dev image, and works regardless of whether the user has installed nix on their machine.
 
-I made an experimental cli called [YADT](https://github.com/AngleSideAngle/YADT/tree/main) (Yet Another Developer Tool) as a proof of concept, and it does indeed work. However, discovering Nix also led to me no longer wanting to develop inside containers in the first place. Comparing the two solutions to installing packages, the way Nix works makes significantly more sense from first-principles than container tools. "Ship a package and all of its dependencies" makes far more sense than "ship my entire machine for the sake of this package."
+I made an experimental cli called [YADT](https://github.com/AngleSideAngle/YADT/tree/main) (Yet Another Developer Tool) as a proof of concept, and it does indeed work. However, discovering Nix also led to me no longer wanting to develop inside containers in the first place. Comparing the two solutions to installing packages, the way Nix works makes significantly more sense from first-principles than container tools. "Ship a package and all of its dependencies" is a simpler approach than "ship my entire machine so this package can run."
 
 Thanks for reading this far :) I wasted a very unreasonable amount of time thinking about this.
 
