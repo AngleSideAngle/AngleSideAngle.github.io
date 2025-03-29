@@ -142,7 +142,7 @@ As you can see, at the cost of very questionable hacks and terrible usability, d
 
 I was able to use a setup that involved using init scripts to curl a bunch of binaries, add them to path, and clone my editor's dotfiles in each distrobox for a few months, but surely there's something better?
 
-[^1]: Presuming your image has a package manager contained in distrobox-init's the hardcoded set of checks.
+[^1]: Presuming your image has a package manager contained in distrobox-init's hardcoded set of checks.
 
 ## Devcontainers
 
