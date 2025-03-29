@@ -1,6 +1,6 @@
 ---
 title: 'The Fundamental Flaw with Containerized Development'
-description: 'Oh boy'
+description: 'Nerd rants about developing software in isolation from the home system; toolbx, distrobox, devcontainers, nix, etc'
 pubDate: '03/29/2025'
 ---
 
@@ -10,7 +10,7 @@ This article was initially going to be titled "Rant About Developing Software on
 
 Around spring 2024, I bought a new laptop. My old one had <abbr title="Do Not buy a Dell Inspiron 2-in-1">melted its hinges apart</abbr> and was (quite literally) held together by duct tape. Going into college, I wanted my computer to be as stable as possible, and Linux was non-negotiable. To this end, I decided to install [Fedora Silverblue](https://fedoraproject.org/atomic-desktops/silverblue/), a distribution of Fedora advertising itself as being pretty much unbreakable.
 
-Silverblue is one of many "Atomic" Linux distributions, others including [Vanilla OS](https://vanillaos.org/), [Bazzite](https://bazzite.gg/), and even [ChromeOS](https://chromeos.google/). These distributions are atomic/immutable, in that their core system is based on an image and cannot be easily modified to install additional packages. In the case of Silverblue, `rpm-ostree` is used to handle transactional updates, comparing the local system to the latest upstream commit, exactly like a version control system. Applications are preferably installed as [Flatpaks](https://flatpak.org/), which are sandboxed from the home system and updated separately, and anything else is supposed to be done using a tool called [`toolbx`](https://containertoolbx.org/) (more on this later). Some major advantages of atomic distros is that, unlike traditional Linux systems, they pretty difficult to break or clutter with unnecessary packages.
+Silverblue is one of many "Atomic" Linux distributions, others including [Vanilla OS](https://vanillaos.org/), [Bazzite](https://bazzite.gg/), and even [ChromeOS](https://chromeos.google/). These distributions are atomic/immutable, in that their core system is based on an image and cannot be easily modified to install additional packages. In the case of Silverblue, `rpm-ostree` is used to handle transactional updates, comparing the local system to the latest upstream commit, exactly like a version control system. Applications are preferably installed as [Flatpaks](https://flatpak.org/), which are sandboxed from the home system and updated separately, and anything else is supposed to be done using a tool called [`toolbx`](https://containertoolbx.org/) (more on this later). Some major advantages of atomic distros is that, unlike traditional Linux systems, they are pretty difficult to break or clutter with unnecessary packages.
 
 ## Toolboxes
 
@@ -20,7 +20,7 @@ However, there are multiple flaws when it comes to actually using toolboxes to m
 
 1. Toolbx only works with premade images.
 
-Since most container images are heavily minified for cloud deployment, they often lack basic command line utilities, a prompt, man pages, etc. This means toolbx only works with a set of premade images for specific distros that have had these tools injected back in. It's unrealistic to set up a new toolbox-ified image for every project you need to work in. And, since it's equally unrealistic to expect every project to maintain a toolbx compatible image just so some developers on linux can contribute, toolbx is effectively unusable for software development.
+Since most container images are heavily minified for cloud deployment, they often lack basic command line utilities, a prompt, man pages, etc. This means toolbx only works with a set of premade images for specific distros that have had these tools injected back in. It's unrealistic to set up a new toolbox-ified image for every project you need to work on. And, since it's equally unrealistic to expect every project to maintain a toolbx compatible image just so some developers on linux can contribute, toolbx is effectively unusable for software development.
 
 2. Toolbx always mounts the home directory into your container.
 
@@ -53,7 +53,7 @@ This completely defeats the purpose of a clean and isolated host OS, while keepi
 
 3. Every toolbx environment must be set up from scratch.
 
-Let's say, ignoring the afformentioned issues, your team decides to make a standardized development image for your project that is compatible with toolbx. Aside from adding back core programs, what would be in it? If you ask a contributor that prefers to use vscode remote development capabilities to mount into toolbox environments, they'd say nothing (more on this later). However, if you ask a different contributor, they might want a specific neovim setup installed. A third contributor would then get annoyed that neovim is being installed instead of emacs, and so on. Surely it's possible to set up a containerized development solution that doesn't involve pre-installing every possible developer tool?
+Let's say, ignoring the aforementioned issues, your team decides to make a standardized development image for your project that is compatible with toolbx. Aside from adding back core programs, what would be in it? If you ask a contributor that prefers to use vscode remote development capabilities to mount into toolbox environments, they'd say nothing (more on this later). However, if you ask a different contributor, they might want a specific neovim setup installed. A third contributor would then get annoyed that neovim is being installed instead of emacs, and so on. Surely it's possible to set up a containerized development solution that doesn't involve pre-installing every possible developer tool?
 
 From toolbx's failings, we can define a set of criteria for the *ideal* development setup.
 
@@ -158,7 +158,7 @@ Since only the project directory is mounted into `/workspace` inside the contain
 
 This is where things get a little silly. Personally, I had an immense amount of difficulty getting vscode's devcontainer extension to play nice with `podman`, the default container manager (as opposed to `docker`) in silverblue. In fact, since the extension is a proprietary black-box, I ended up having so much difficulty I switched to [helix](https://helix-editor.com/), a much nicer terminal-native editor, in hopes that command line tools would be easier to use inside a devcontainer. Oh boy was I wrong.
 
-The vscode devcontainer extension is not the only implementation of the specification. The devcontainers project, which was spun out of Microsoft in an attempt to make it a cross-editor standard, also maintains a reference [cli](https://github.com/devcontainers/cli). I decided I would make a setup that would install my prefered developer tools (`helix` and `zellij`) inside each devcontainer, and finally be finished with this pointless journey through container devtools. As it turns out, this is impossible.
+The vscode devcontainer extension is not the only implementation of the specification. The devcontainers project, which was spun out of Microsoft in an attempt to make it a cross-editor standard, also maintains a reference [cli](https://github.com/devcontainers/cli). I decided I would make a setup that would install my preferred developer tools (`helix` and `zellij`) inside each devcontainer, and finally be finished with this pointless journey through container devtools. As it turns out, this is impossible.
 
 The devcontainer spec supports a concept called [features](https://containers.dev/features), in which custom tools can be added on top of containers. For example, if I wanted to add neovim and zellij to a devcontainer, I would add the following to its `devcontainer.json`:
 
@@ -171,7 +171,7 @@ The devcontainer spec supports a concept called [features](https://containers.de
 
 Wait a minute... the `devcontainer.json` is a configuration for the project's environment that *everyone* will use. This means if a contributor clones a repository and wants to edit it with neovim and zellij, they're going to have to gitignore their `devcontainer.json`, or beg upstream to install their preferred tools in everyone's workspace. This certainly isn't workable.
 
-But wait again, you don't have to manually add a `vscode-server` feature to all your projects. How does Microsoft do it? The answer is that I can't tell you because I don't know. VSCode server is proprietary. Presumably, the vscode server binary that vscode installs into root of every container it connects to is completely statically linked, a luxury we do not have in our goal of making arbitrary development environments compatible with arbitrary developer tools.
+But wait again, you don't have to manually add a `vscode-server` feature to all your projects. How does Microsoft do it? The answer is that I can't tell you because I don't know. VSCode server is proprietary. Presumably, the vscode server binary that vscode installs into the root directory of every container it connects to is completely statically linked, a luxury we do not have in our goal of making arbitrary development environments compatible with arbitrary developer tools.
 
 The next thing I thought of was injecting features into containers. It's conceivable for a tool to be able to use devcontainers with a set of user-defined additional features. This, too, falls apart if we examine it further.
 
@@ -246,7 +246,7 @@ RUN echo $(find -P . -type l -print) > built_pkg_dirs
 RUN mkdir /tmp/closure
 RUN nix copy --to /tmp/closure $(cat built_pkg_dirs)
 
-# Fill profile directory with simlinks to every binary of everyone package that
+# Fill profile directory with symlinks to every binary of everyone package that
 # were specified to be installed
 RUN mkdir /tmp/profile
 RUN for package in $(cat built_pkg_dirs); do \

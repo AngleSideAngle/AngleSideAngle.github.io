@@ -1,10 +1,8 @@
----
-layout: ../layouts/Page.astro
-title: "Asa Paparo"
-description: "Asa's personal website"
----
-
 import Posts from '../components/Posts.astro';
+import Page from '../layouts/Page.astro';
+// couldn't figure out how to send props to a layout via markdown
+
+<Page title="Asa Paparo" description="Asa's Personal Website">
 
 # I'm Asa Paparo
 
@@ -29,3 +27,5 @@ In high school, I was programming lead for [FRC](https://www.firstinspires.org/r
 [fediverse](https://mastodon.social/@AngleSideAngle)
 [github](https://github.com/AngleSideAngle)
 [linkedin](https://www.linkedin.com/in/asa-paparo)
+
+</Page>
