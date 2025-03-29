@@ -134,13 +134,15 @@ In order to set up a set of core packages in an arbitrary linux environment, `di
 As you can see, at the cost of very questionable hacks and terrible usability, distrobox comes somewhat closer than toolbx to acheiving our goals.
 
 - [?] Projects must be able to define reproducible environments.
-  - `distrobox-assemble` provides rudimentary support for setting up consistent environments from arbitrary* base images
+  - `distrobox-assemble` provides rudimentary support for setting up consistent environments from arbitrary[^1] base images
 - [?] Development environments must be isolated from the host system.
   - with custom home directories, we can set each box to use `~/distrobox/<name>` as its home directory
 - [?] The system must be editor, tool, and environment agnostic.
   - theoretically users can use init scripts to install binaries for whatever tools they want into their containers
 
 I was able to use a setup that involved using init scripts to curl a bunch of binaries, add them to path, and clone my editor's dotfiles in each distrobox for a few months, but surely there's something better?
+
+[^1]: Presuming your image has a package manager contained in distrobox-init's the hardcoded set of checks.
 
 ## Devcontainers
 
@@ -156,7 +158,7 @@ Since only the project directory is mounted into `/workspace` inside the contain
 
 - [ ] The system must be editor, tool, and environment agnostic.
 
-This is where things get a little silly. Personally, I had an immense amount of difficulty getting vscode's devcontainer extension to play nice with `podman`, the default container manager (as opposed to `docker`) in silverblue. In fact, since the extension is a proprietary black-box, I ended up having so much difficulty I switched to [helix](https://helix-editor.com/), a much nicer terminal-native editor, in hopes that command line tools would be easier to use inside a devcontainer. Oh boy was I wrong.
+This is where things get a little silly. Personally, I had an immense amount of difficulty getting vscode's devcontainer extension to play nice with `podman`, the default container manager (as opposed to `docker`) in Silverblue. In fact, since the extension is a proprietary black-box, I ended up having so much difficulty I switched to [helix](https://helix-editor.com/), a much nicer terminal-native editor, in hopes that command line tools would be easier to use inside a devcontainer. Oh boy was I wrong.
 
 The vscode devcontainer extension is not the only implementation of the specification. The devcontainers project, which was spun out of Microsoft in an attempt to make it a cross-editor standard, also maintains a reference [cli](https://github.com/devcontainers/cli). I decided I would make a setup that would install my preferred developer tools (`helix` and `zellij`) inside each devcontainer, and finally be finished with this pointless journey through container devtools. As it turns out, this is impossible.
 
@@ -218,7 +220,7 @@ So now we're at quite a difficult roadblock. It's possible to make per-project r
 
 Like many before me looking at this problem, I was aware of a tool called Nix, but had no clue what it did. I was inclined to dislike it, in no small part due to evangelists. However, while searching for a solution, I came across [this article](https://mitchellh.com/writing/nix-with-dockerfiles) by Mitchell Hashimoto that describes using Nix inside a dockerfile to build an application and then copying the build output into a minimal layer.
 
-Nix has this really cool ability to keep track of a package's *closure*. This refers to the package, all of its dependencies, and all the dependencies' dependencies, recursively. For example, if I build `nixpkgs#firefox` in a local directory, it will output a `result` symlink to `/nix/store/<hash>-firefox-<version>/`. Nix stores every package inside the nix store using a hash, and every package references all of its dependencies via their absolute paths. This enables a lot of awesome things, including multiple versions of the same package and ephemeral shells. Most importantly, for our purposes, it lets us copy the closure of a package (or multiple packages) into a directory.
+Nix has this really cool ability to keep track of a package's *closure*. This refers to the package, all of its dependencies, and all the dependencies' dependencies, recursively. For example, if I build `nixpkgs#firefox` in a local directory, it will output a `result` symlink to `/nix/store/<hash>-firefox-<version>/`. Nix stores every package inside the *nix store* using a hash, and every package references all of its dependencies via their absolute paths. This enables a lot of awesome things, including multiple versions of the same package and ephemeral shells. Most importantly, for our purposes, it lets us copy the closure of a package (or multiple packages) into a directory.
 
 This inspired me to make something *really silly*. Feel free to skip this code if you aren't interested in the details of what it does.
 
@@ -269,7 +271,7 @@ COPY --from=builder /tmp/closure /
 COPY --from=builder /tmp/profile /yadt-bin
 ```
 
-This Dockerfile installs a user-specified set of packages into a layer on top of an arbitrary dev image, and works regardless of whether the user has installed nix on their machine.
+This dockerfile installs a user-specified set of packages into a layer on top of an arbitrary dev image, and works regardless of whether the user has installed Nix on their machine.
 
 I made an experimental cli called [YADT](https://github.com/AngleSideAngle/YADT/tree/main) (Yet Another Developer Tool) as a proof of concept, and it does indeed work. However, discovering Nix also led to me no longer wanting to develop inside containers in the first place. Comparing the two solutions to installing packages, the way Nix works makes significantly more sense from first-principles than container tools. "Ship a package and all of its dependencies" is a simpler approach than "ship my entire machine so this package can run."
 
