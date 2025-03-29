@@ -1,5 +1,5 @@
 ---
-title: 'The Fundamental Flaw with Containerized Development'
+title: 'Cracks in Containerized Development'
 description: 'Nerd rants about developing software in isolation from the home system; toolbx, distrobox, devcontainers, nix, etc'
 pubDate: '03/29/2025'
 ---
